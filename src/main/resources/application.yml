@@ -1,0 +1,14 @@
+server:
+  port: 8078
+spring:
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/hungli
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
+
+
+    main:
+      allow-circular-references: true
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huangli.demo.dao.LoginDao">
+
+
+    <select id="selectUserByLoginName" resultType="com.huangli.demo.pojo.dto.LoginUserDto" parameterType="String">
+  SELECT u.id,u.user_name as username,u.user_password as password,u.user_role,r.role_name
+ FROM USER AS u LEFT JOIN role AS r ON u.user_role=r.id WHERE u.user_name=#{user_name}
+    </select>
+
+</mapper>

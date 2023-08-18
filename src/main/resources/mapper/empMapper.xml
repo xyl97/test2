@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huangli.demo.dao.EmpDao">
+
+    <!--查询员工信息 -->
+    <select id="selectStaff" resultType="com.huangli.demo.pojo.vo.EmpListVo"
+            parameterType="com.huangli.demo.pojo.dto.SearchEmpDto">
+
+        select * from staff
+        <where>
+            <if test="emp_name!=null and emp_name!='' ">
+                emp_name like concat("%",#{emp_name},"%")
+            </if>
+            <if test="dept_name!=null and dept_name!='' ">
+                and dept_name like concat("%",#{dept_name},"%")
+            </if>
+            <if test="emp_degree_name!=null and emp_degree_name!='' ">
+                and emp_degree_name like concat("%",#{emp_degree_name},"%")
+            </if>
+        </where>
+    </select>
+
+
+    <!---添加员工-->
+    <insert id="addEmp" parameterType="com.huangli.demo.pojo.dto.AddEmpDto">
+INSERT INTO staff(emp_name,sex,age,dept_name,emp_degree_name) VALUE(#{empName},#{empSex},#{empAge},#{empDeptName},#{empDegreeName});
+
+    </insert>
+
+    <!--根据员工id删除员工-->
+    <delete id="deletEmp" parameterType="int">
+        DELETE FROM staff WHERE id = #{id}
+    </delete>
+
+    <!--修改员工数据-->
+    <update id="upEmp" parameterType="com.huangli.demo.pojo.dto.UpEmpDto">
+UPDATE staff SET emp_name=#{empName},sex=#{sex},age=#{age},dept_name=#{deptName},emp_degree_name=#{empDegreeName} WHERE id=#{id}
+    </update>
+</mapper>
