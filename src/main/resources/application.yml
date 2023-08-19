@@ -1,5 +1,8 @@
 server:
   port: 8078
+  servlet:
+    session:
+      timeout: 3s
 spring:
 
   datasource:
@@ -9,6 +12,6 @@ spring:
     password: root
 
 
-    main:
-      allow-circular-references: true
+  main:
+     allow-circular-references: true
 
