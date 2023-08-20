@@ -37,16 +37,7 @@ public class LogInterceptor implements HandlerInterceptor {
 //            System.out.println("跨域访问");
 //            return true;
 //        }
-
-
-
-//        crossDomain(request, response);
-//
-//        long startTime = System.currentTimeMillis();
-//
-//        request.setAttribute("startTime", startTime);
-
-
+        ;
 
          User userinfo = (User) request.getSession().getAttribute("userinfo");
 
@@ -61,7 +52,6 @@ public class LogInterceptor implements HandlerInterceptor {
         ma.put("msg","请重新登录");
         PrintWriter writer = response.getWriter();
         writer.println(JSON.toJSONString(ma));//转换成JSON格式返回
-
 
         return false;
 
