@@ -20,14 +20,6 @@ import java.util.HashMap;
 @Component
 public class LogInterceptor implements HandlerInterceptor {
 
-//    public void crossDomain(HttpServletRequest request, HttpServletResponse response) {
-//
-//        response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
-//
-//        response.setHeader("Access-Control-Allow-Credentials", "true");
-//
-//    }
-
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -39,17 +31,19 @@ public class LogInterceptor implements HandlerInterceptor {
 //        }
         ;
 
-         User userinfo = (User) request.getSession().getAttribute("userinfo");
+        User userinfo = (User) request.getSession().getAttribute("userinfo");
 
-         if (userinfo!=null){
+        if (userinfo != null) {
 
-             return true;
-         }
-         response.setCharacterEncoding("utf8");
+            return true;
+        }
+
+
+        response.setCharacterEncoding("utf8");
         response.setContentType("application/json;charset=UTF-8");
         HashMap<String, Object> ma = new HashMap<>();
-        ma.put("code",response.SC_UNAUTHORIZED);
-        ma.put("msg","请重新登录");
+        ma.put("code", response.SC_UNAUTHORIZED);
+        ma.put("msg", "请重新登录");
         PrintWriter writer = response.getWriter();
         writer.println(JSON.toJSONString(ma));//转换成JSON格式返回
 
@@ -57,7 +51,6 @@ public class LogInterceptor implements HandlerInterceptor {
 
 
     }
-
 
 
     @Override

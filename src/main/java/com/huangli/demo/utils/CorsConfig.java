@@ -17,6 +17,7 @@ public class CorsConfig extends WebMvcConfigurerAdapter {
 //    public void addCorsMappings(CorsRegistry registry) {
 //
 
+
 //        registry.addMapping("/**")
 //                .allowCredentials(true)
 //                .allowedOriginPatterns("*")
