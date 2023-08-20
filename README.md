@@ -37,7 +37,6 @@ function prit(){
 grep -o -n $data $path
 
 }
-
 seach
 prit
 
