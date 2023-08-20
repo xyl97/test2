@@ -9,6 +9,8 @@ import com.huangli.demo.pojo.dto.UpEmpDto;
 import com.huangli.demo.pojo.vo.EmpListVo;
 import com.huangli.demo.service.EmpService;
 import com.huangli.demo.utils.ResponseResult;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +19,7 @@ import java.util.List;
 /**
  * 员工控制器
  */
+@Api(tags = "职工列表Controller")
 @RestController
 @RequestMapping("/emp")
 public class EmpController {
@@ -25,12 +28,13 @@ public class EmpController {
     private EmpService empService;
 
     /**
-     * 查询职工信息
+     * 查询职工列表
      * @param searchEmpDto 条件查询数据
      * @param pageNo
      * @param pageSize
      * @return
      */
+    @ApiOperation(value = "查询职工列表")
     @PostMapping("list")
     public ResponseResult<List<EmpListVo>> selectStaffList(@RequestBody SearchEmpDto searchEmpDto, @RequestParam(value = "pageNo" ,defaultValue = "1")Integer pageNo,
                                                            @RequestParam(value = "pageSize",defaultValue = "2") Integer pageSize){
@@ -47,6 +51,7 @@ public class EmpController {
      * @param addEmpDto 前端发送的员工数据
      * @return
      */
+    @ApiOperation(value = "添加职工")
     @PostMapping("add")
     public ResponseResult addEmp (@RequestBody AddEmpDto addEmpDto){
 //        addEmpDto.setId();  //应该手动添加id
@@ -74,6 +79,7 @@ public class EmpController {
      * @param id 员工id
      * @return
      */
+    @ApiOperation(value = "删除职工")
     @DeleteMapping("deleteEmp/{id}")
     public ResponseResult deleteEmp (@PathVariable(value = "id")  Integer id){
 
@@ -89,6 +95,7 @@ public class EmpController {
      * @param upEmpDto  前端获取修改后的员工数据
      * @return
      */
+    @ApiOperation(value = "修改职工信息")
     @PutMapping("update")
     public ResponseResult updateEmp (@RequestBody UpEmpDto upEmpDto) {
 

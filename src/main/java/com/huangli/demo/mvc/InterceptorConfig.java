@@ -9,6 +9,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.servlet.Filter;
@@ -28,7 +29,10 @@ public class InterceptorConfig implements WebMvcConfigurer {
                 //选择全部接口
                 .addPathPatterns("/**")
                 //登录接口除外
-                .excludePathPatterns("/login");
+                .excludePathPatterns("/login")
+                //放开swagger
+//                .excludePathPatterns("/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**");
+                .excludePathPatterns("/swagger-resources/**", "/webjars/**", "/v2/**", "/**.html/**");
     }
 
 
@@ -49,5 +53,14 @@ public class InterceptorConfig implements WebMvcConfigurer {
 
         return new CorsFilter(source);
 
-    }
-    }
+         }
+
+//    @Override
+//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//       //  放行swagger
+//        registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
+//        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+//    }
+
+
+}

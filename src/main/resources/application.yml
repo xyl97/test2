@@ -1,8 +1,6 @@
 server:
   port: 8078
-  servlet:
-    session:
-      timeout: 0
+
 spring:
 
   datasource:
@@ -15,3 +13,7 @@ spring:
   main:
      allow-circular-references: true
 
+#解决添加swagger之后启动报错问题
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
