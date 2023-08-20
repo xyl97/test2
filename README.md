@@ -7,6 +7,6 @@
 
 swagger接口地址:http://localhost:8078/doc.html
 
-拦截器用的Session，没写过期时间
+拦截器没写过期时间
 
 实体类Teacher和项目没有关系
